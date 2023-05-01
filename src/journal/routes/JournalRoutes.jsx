@@ -1,13 +1,12 @@
 import React from 'react'
-import { Navigate, Route, Routes } from 'react-router-dom'
-import { HomePage } from '../pages/HomePage'
+import { HomePage } from '../pages/HomePage';
+import { Route, Routes } from 'react-router-dom';
 
 export const JournalRoutes = () => {
   return (
 
    <Routes>
-    <Route path='/' element={<HomePage/>}/>
-    <Route path='/*' element={<Navigate to='/'/>}/>
+      <Route path="home" element={<HomePage />} />
    </Routes>
   )
 }

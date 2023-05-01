@@ -1,17 +1,15 @@
-import React from 'react'
-import { Route, Routes } from 'react-router-dom'
-import { AuthRoutes } from '../auth/routes/AuthRoutes'
-import { JournalRoutes } from '../journal/routes/JournalRoutes'
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import { HomePage } from "../journal/pages/HomePage";
+import { LoginPage, RegisterPage } from "../auth/pages";
 
 export const AppRouter = () => {
   return (
+    <Routes>
+      <Route exact path="/auth/pages/login" element={<LoginPage />} />
+      <Route exact path="/auth/pages/register" element={<RegisterPage />} />
+      <Route path="/" element={<HomePage />} />
 
-<Routes>
-
-    <Route path='/auth/*' element={<AuthRoutes/>}/>
-
-    <Route path='/*' element={<JournalRoutes/>}/>
-
-</Routes>
-    )
-}
+    </Routes>
+  );
+};

@@ -5,10 +5,12 @@ import { AuthLayout } from '../layout/AuthLayout';
 import { useForm } from '../../hook/useForm';
 import { useDispatch } from 'react-redux';
 import { chekingAuthentication, statGoogleSignIn } from '../../store/auth/thunks';
-
+import {useMemo} from 'react'
+import { useSelector } from "react-redux";
 
 export const LoginPage = () => {
 
+  const {status} = useSelector(state => state.auth);
   
   const dispatch = useDispatch();
 
@@ -16,6 +18,9 @@ export const LoginPage = () => {
     email: 'rafa@gmail.com',
     password: '5655055',
   });
+
+
+  const isAuthenticating = useMemo(() => status === 'checking', [status]);
 
 
   const onSubmit = (event) => {
@@ -62,12 +67,13 @@ export const LoginPage = () => {
             
             <Grid container spacing={ 2 } sx={{ mb: 2, mt: 1 }}>
               <Grid item xs={ 12 } sm={ 6 }>
-                <Button type='submit' variant='contained' fullWidth>
+                <Button disabled={isAuthenticating} type='submit' variant='contained' fullWidth>
                   Login
                 </Button>
               </Grid>
               <Grid item xs={ 12 } sm={ 6 }>
                 <Button 
+                disabled={isAuthenticating}
                 variant='contained' 
                 fullWidth
                 onClick={onGoogleSignIn}

@@ -4,7 +4,7 @@ import { Google } from '@mui/icons-material';
 import { AuthLayout } from '../layout/AuthLayout';
 import { useForm } from '../../hook/useForm';
 import { useDispatch } from 'react-redux';
-import { chekingAuthentication, statGoogleSignIn } from '../../store/auth/thunks';
+import { checkingAuthentication, startGoogleSignIn } from '../../store/auth/thunks';
 import {useMemo} from 'react'
 import { useSelector } from "react-redux";
 
@@ -27,13 +27,13 @@ export const LoginPage = () => {
     event.preventDefault();
 
     console.log({email, password});
-    dispatch(chekingAuthentication());
+    dispatch(checkingAuthentication());
   }
 
 
   const onGoogleSignIn = () => {
     console.log('onGoogleSignIn');
-    dispatch(statGoogleSignIn());
+    dispatch(startGoogleSignIn());
   }
 
 

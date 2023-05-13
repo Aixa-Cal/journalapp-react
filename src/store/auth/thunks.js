@@ -43,11 +43,12 @@ export const startLoginWithEmailPassword = ({ email, password }) => {
 
         dispatch( checkingCredentials() );
 
-        const result = await loginWithEmailPassword({ email, password });
-        console.log(result);
+        const result = await startLoginWithEmailPassword({email, password});
+
+        // const {ok, uid, photoURL, errorMessage} = await registerUserWithEmailPassword({ email, password });
 
         if ( !result.ok ) return dispatch( logout( result ) );
-        dispatch( login( result ));
+        dispatch( login( result));
 
     }
 }

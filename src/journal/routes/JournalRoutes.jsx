@@ -1,12 +1,14 @@
 import React from 'react'
-import { HomePage } from '../pages/HomePage';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import { JournalPage } from '../pages/JournalPage';
+
 
 export const JournalRoutes = () => {
   return (
+    <Routes>
+        <Route path="/" element={ <JournalPage /> } />
 
-   <Routes>
-      <Route path="home" element={<HomePage />} />
-   </Routes>
+        <Route path="/*" element={ <Navigate to="/" /> } />
+    </Routes>
   )
 }
